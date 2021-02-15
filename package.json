@@ -1,0 +1,21 @@
+{
+  "name": "fmfserver",
+  "version": "1.0.0",
+  "description": "FMF Api for products and other conections",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon ."
+  },
+  "author": "FMF Custom",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mercadopago": "^1.5.4",
+    "mongoose": "^5.11.15"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
