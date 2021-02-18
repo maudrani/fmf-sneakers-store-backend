@@ -11,9 +11,23 @@ const ProductSchema = mongoose.Schema({
     required: true,
     trim: true,
   },
-  price: { type: Number, required: true, default: 7000 },
+  price: { type: Number, required: true },
   rating: { type: Number, default: 5 },
   tags: { type: Array },
+  images: {
+    x50: {
+      type: Array,
+      required: true,
+    },
+    x25: {
+      type: Array,
+      required: true,
+    },
+    x15: {
+      type: Array,
+      required: true,
+    },
+  },
 });
 
 module.exports = mongoose.model("Product", ProductSchema);

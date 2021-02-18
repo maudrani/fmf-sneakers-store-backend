@@ -12,11 +12,11 @@ const CreatePreference = (req, res) => {
   mercadopago.preferences
     .create(req.body)
     .then(function (response) {
-      console.log(response.body);
       return res.json({ ...response.body });
     })
     .catch(function (error) {
       console.log(error);
+      return res.json({ ...error });
     });
 };
 

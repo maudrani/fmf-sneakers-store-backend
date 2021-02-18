@@ -1,11 +1,15 @@
 const express = require("express");
 const conectarDB = require("./config/db");
+const cors = require("cors");
 
 // crear el servidor
 const app = express();
 
 // Conectar a la base de datos
 conectarDB();
+
+//hailitar cors
+app.use(cors());
 
 // Habilitar express.json
 app.use(express.json({ extend: true }));
@@ -14,8 +18,10 @@ app.use(express.json({ extend: true }));
 const PORT = process.env.PORT || 4000;
 
 //Importar rutas
-app.use("/api/create-product", require("./routes/products"));
+app.use("/api/products", require("./routes/products"));
+app.use("/api/orders", require("./routes/orders"));
 app.use("/api/mercadopago", require("./routes/mercadopago"));
+app.use("/api/sendmail", require("./routes/sendmail"));
 
 //Arrancar app
 app.listen(PORT, () => {
@@ -24,5 +30,5 @@ app.listen(PORT, () => {
 
 // Definir la pagina principal
 app.get("/", (req, res) => {
-  res.send("Hola mundo");
+  res.send("FMF Sneakers");
 });
