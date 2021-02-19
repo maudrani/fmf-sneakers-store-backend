@@ -2,6 +2,9 @@ const express = require("express");
 const conectarDB = require("./config/db");
 const cors = require("cors");
 
+//Trying ssr
+const path = require("path");
+
 // crear el servidor
 const app = express();
 
@@ -23,18 +26,15 @@ app.use("/api/orders", require("./routes/orders"));
 app.use("/api/mercadopago", require("./routes/mercadopago"));
 app.use("/api/sendmail", require("./routes/sendmail"));
 
-
 //server side test
-app.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '/index.html'), function(err) {
-    if (err) {
-      res.status(500).send(err)
-    }
-  })
-})
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.get('/*', function(req,res) {
+		res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 //Arrancar app
-app.listen(PORT, '0.0.0.0', () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`El servidor está funcionando en el puerto ${PORT}`);
 });
 
