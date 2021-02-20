@@ -26,13 +26,6 @@ app.use("/api/orders", require("./routes/orders"));
 app.use("/api/mercadopago", require("./routes/mercadopago"));
 app.use("/api/sendmail", require("./routes/sendmail"));
 
-//server side test
-app.use(express.static(path.join(__dirname, 'fmfsneakers.com/public_html')));
-
-app.get('/*', function(req,res) {
-		res.sendFile(path.join(__dirname, 'fmfsneakers.com/public_html', 'index.html'));
-});
-
 //Arrancar app
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`El servidor está funcionando en el puerto ${PORT}`);
