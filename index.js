@@ -27,10 +27,10 @@ app.use("/api/mercadopago", require("./routes/mercadopago"));
 app.use("/api/sendmail", require("./routes/sendmail"));
 
 //server side test
-app.use(express.static(path.join(__dirname, './')));
+app.use(express.static(path.join(__dirname, '')));
 
 app.get('/*', function(req,res) {
-		res.sendFile(path.join(__dirname, './', 'index.html'));
+		res.sendFile(path.join(__dirname, '', 'index.html'));
 });
 
 //Arrancar app
