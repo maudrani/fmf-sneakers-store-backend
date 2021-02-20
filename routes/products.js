@@ -20,7 +20,7 @@ const upload = multer({
 
 // Crea un producto
 // api/products
-router.post("/", upload.array('images', 12) ,productController.crearProducto);
-router.get("/",productController.obtenerProductos);
+router.post("/create", productController.crearProducto);
+router.post("/bring",productController.obtenerProductos);
 
 module.exports = router;

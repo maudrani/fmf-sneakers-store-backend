@@ -1,4 +1,5 @@
 const Product = require("../models/Product");
+const db = require("../config/db");
 
 exports.crearProducto = async (req, res) => {
   try {
@@ -13,8 +14,25 @@ exports.crearProducto = async (req, res) => {
 
 exports.obtenerProductos = async (req, res) => {
   try {
-    const productos = await Product.find();
-    res.json( productos );
+    const config = {
+      query: (await req.body.query) || {},
+      filter: (await req.body.filter) || {},
+      limit: (await req.body.limit) ? JSON.parse(req.body.limit) : null,
+      random: (await req.body.random) || null,
+      skip: null,
+    };
+
+    if (config.random === true) {
+      const n = await Product.collection.countDocuments(config.query);
+      const r = Math.floor(Math.random() * n);
+      config.skip = r;
+    }
+
+    const products = await Product.find(config.query, config.filter)
+      .limit(config.limit)
+      .skip(config.skip);
+
+    res.json(products);
   } catch (error) {
     console.log(error);
     res.status(500).send("Hubo un error al cargar los productos");
