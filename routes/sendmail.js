@@ -8,13 +8,13 @@ router.post("/", (req, res) => {
     post: 587,
     secure: false,
     auth: {
-      user: "contacto@fmfsneakers.com",
-      pass: "!FmfSneakers2021",
+      user: "fmf@fmfsneakers.com",
+      pass: "@nUDw|5N",
     },
   });
 
   const mailOptions = {
-    from: "contacto@fmfsneakers.com",
+    from: "fmf@fmfsneakers.com",
     to: req.body.to,
     subject: req.body.subject,
     html: req.body.html,

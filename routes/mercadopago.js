@@ -18,21 +18,25 @@ const CreatePreference = (req, res) => {
   mercadopago.preferences
     .create(req.body)
     .then(function (response) {
-      console.log(res.json({ ...response.body }));
+      /* console.log(response); */
       return res.json({ ...response.body });
     })
     .catch(function (error) {
-      console.log(error);
+      /* console.log(error); */
       return res.json({ ...error });
     });
 };
 
 const NotificationUrl = (req,res) => {
-  console.log(req);
-  console.log(res);
+  try {
+    console.log(req.params.id);
+    console.log(req);
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 router.post("/createpreference", CreatePreference);
-router.post("/notificationurl", NotificationUrl);
+router.post("/notificationurl/id:", NotificationUrl);
 
 module.exports = router;

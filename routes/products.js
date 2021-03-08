@@ -22,5 +22,7 @@ const upload = multer({
 // api/products
 router.post("/create", productController.crearProducto);
 router.post("/bring",productController.obtenerProductos);
+router.put("/update/:id",productController.actualizarProducto);
+router.delete("/delete/:id",productController.borrarProducto);
 
 module.exports = router;

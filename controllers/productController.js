@@ -38,3 +38,60 @@ exports.obtenerProductos = async (req, res) => {
     res.status(500).send("Hubo un error al cargar los productos");
   }
 };
+
+exports.actualizarProducto = async (req, res) => {
+  const { name, price, category, tags, images } = req.body;
+  const nuevoProducto = {};
+
+  if (name) {
+    nuevoProducto.name = name;
+  }
+  if (price) {
+    nuevoProducto.price = price;
+  }
+  if (category) {
+    nuevoProducto.category = category;
+  }
+  if (tags) {
+    nuevoProducto.tags = tags;
+  }
+  if (images) {
+    nuevoProducto.images = images;
+  }
+
+  try {
+    let producto = await Product.findById(req.params.id);
+
+    if (!producto) {
+      return res.status(404).json({ msg: "Producto no encontrado" });
+    }
+
+    producto = await Product.findByIdAndUpdate(
+      { _id: req.params.id },
+      { $set: nuevoProducto },
+      { new: true }
+    );
+
+    res.json({ producto });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Hubo un error en la actualización del producto");
+  }
+};
+
+exports.borrarProducto = async (req, res) => {
+  try {
+    let producto = await Product.findById(req.params.id);
+
+    if (!producto) {
+      return res.status(404).json({ msg: "Producto no encontrado" });
+    }
+
+    producto = await Product.findOneAndRemove({ _id: req.params.id });
+
+    res.json({ msg: 'Producto eliminado' });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Hubo un error en la actualización del producto");
+  }
+};
