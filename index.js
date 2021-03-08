@@ -25,6 +25,7 @@ app.use("/api/products", require("./routes/products"));
 app.use("/api/orders", require("./routes/orders"));
 app.use("/api/mercadopago", require("./routes/mercadopago"));
 app.use("/api/sendmail", require("./routes/sendmail"));
+app.use("/api/admin", require("./routes/admin"));
 
 //Arrancar app
 app.listen(PORT, "0.0.0.0", () => {
