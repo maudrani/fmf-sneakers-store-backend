@@ -3,16 +3,27 @@ const mercadopago = require("mercadopago");
 const express = require("express");
 const router = express.Router();
 
-/* TEST */
+/* Production */
 mercadopago.configure({
   access_token:
-    "TEST-1825194644671291-020305-941745df511e0bbbef675d8dc97bf9d3-181749895",
+    "APP_USR-5137562355773089-031019-388095f52c4e850a4b07398734122beb-73128946",
 });
 
-/* mercadopago.configure({
-  access_token:
-    "APP_USR-1825194644671291-020305-cb803dbe7220c03579bf51cd15e00004-181749895",
-}); */
+
+/* Public Key - Production */
+/* APP_USR-ca4c383e-bd3c-467d-895d-977d36302955 */
+
+/* Public Key - Test */
+/*  TEST-5a7f35fd-b49e-4922-8c0b-cb60735d1a73   */
+
+/* Access Token - Test */
+/*  TEST-5137562355773089-031019-1f910e4dbb40046e09c03bd2b60c8389-73128946  */
+
+/* Client Id */
+/*  5137562355773089  */
+
+/* Client Secret */
+/*  SQb12Vx9ScGH274jYQybPGwcnTWpEUtM  */
 
 const CreatePreference = (req, res) => {
   mercadopago.preferences
