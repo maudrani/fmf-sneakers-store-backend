@@ -7,4 +7,4 @@ router.post("/bring",orderController.obtenerOrdenes);
 router.put("/update/:id",orderController.actualizarOrden);
 router.delete("/delete/:id",orderController.borrarOrden);
 
-module.exports = router;
+module.exports = router;    
