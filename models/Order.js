@@ -29,6 +29,9 @@ const OrderSchema = mongoose.Schema({
   order_state: { type: String, required: true, trim: true },
   date: { type: String, required: true, trim: true },
   hour: { type: String, required: true, trim: true },
+  viewed: { type: Boolean, default: false },
+  state_changed: { type: Boolean, default: false },
+  mercadopago_received_data: { type: Object, default: {} },
 });
 
 module.exports = mongoose.model("Order", OrderSchema);

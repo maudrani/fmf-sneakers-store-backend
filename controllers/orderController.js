@@ -40,18 +40,42 @@ exports.obtenerOrdenes = async (req, res) => {
 };
 
 exports.actualizarOrden = async (req, res) => {
-  const { state } = req.body;
+  const { order_state, items, payer, payment_method, totals, viewed, date, hour, state_changed } = req.body;
   const nuevaOrden = {};
 
-  if (state) {
-    nuevaOrden.state = state;
+  if (order_state) {
+    nuevaOrden.order_state = order_state;
   }
-
+  if (items) {
+    nuevaOrden.items = items;
+  }
+  if (payer) {
+    nuevaOrden.payer = payer;
+  }
+  if (payment_method) {
+    nuevaOrden.payment_method = payment_method;
+  }
+  if (totals) {
+    nuevaOrden.totals = totals;
+  }
+  if (viewed) {
+    nuevaOrden.viewed = viewed;
+  }
+  if (date) {
+    nuevaOrden.date = date;
+  }
+  if (hour) {
+    nuevaOrden.hour = hour;
+  }
+  if (state_changed) {
+    nuevaOrden.state_changed = state_changed;
+  }
+  
   try {
     let order = await Order.findById(req.params.id);
 
     if (!order) {
-      return res.status(404).json({ msg: "Orden no encontrado" });
+      return res.status(404).json({ msg: "Orden no encontrada" });
     }
 
     order = await Order.findByIdAndUpdate(

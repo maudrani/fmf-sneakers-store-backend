@@ -1,5 +1,5 @@
 const mercadopago = require("mercadopago");
-
+const nodemailer = require("nodemailer");
 const express = require("express");
 const router = express.Router();
 
@@ -37,14 +37,13 @@ const CreatePreference = (req, res) => {
 
 const NotificationUrl = (req, res) => {
   try {
-    console.log(req.params.id);
-    console.log(req);
+    res.json({id: req.params.id, msg: 'Hola'});
   } catch (error) {
-    console.log(error);
-  }
+    res.status(500).send("Hubo un error en la actualización de la orden (notification url process)");
+  } 
 };
 
 router.post("/createpreference", CreatePreference);
-router.post("/notificationurl/id:", NotificationUrl);
+router.put("/update/:id", NotificationUrl);
 
 module.exports = router;

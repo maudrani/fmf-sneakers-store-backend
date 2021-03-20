@@ -58,6 +58,7 @@ exports.actualizarProducto = async (req, res) => {
   if (images) {
     nuevoProducto.images = images;
   }
+  
 
   try {
     let producto = await Product.findById(req.params.id);
