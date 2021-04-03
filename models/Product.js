@@ -12,6 +12,7 @@ const ProductSchema = mongoose.Schema({
     trim: true,
   },
   price: { type: Number, required: true },
+  price_original_quality: { type: Number, required: true },
   rating: { type: Number, default: 5 },
   tags: { type: Array },
   images: {

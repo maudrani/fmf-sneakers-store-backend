@@ -40,7 +40,7 @@ exports.obtenerProductos = async (req, res) => {
 };
 
 exports.actualizarProducto = async (req, res) => {
-  const { name, price, category, tags, images } = req.body;
+  const { name, price, category, tags, images, price_original_quality } = req.body;
   const nuevoProducto = {};
 
   if (name) {
@@ -49,6 +49,10 @@ exports.actualizarProducto = async (req, res) => {
   if (price) {
     nuevoProducto.price = price;
   }
+  if (price_original_quality) {
+    nuevoProducto.price_original_quality = price_original_quality;
+  }
+
   if (category) {
     nuevoProducto.category = category;
   }
@@ -58,7 +62,6 @@ exports.actualizarProducto = async (req, res) => {
   if (images) {
     nuevoProducto.images = images;
   }
-  
 
   try {
     let producto = await Product.findById(req.params.id);
@@ -90,7 +93,7 @@ exports.borrarProducto = async (req, res) => {
 
     producto = await Product.findOneAndRemove({ _id: req.params.id });
 
-    res.json({ msg: 'Producto eliminado' });
+    res.json({ msg: "Producto eliminado" });
   } catch (error) {
     console.log(error);
     res.status(500).send("Hubo un error en la actualización del producto");
