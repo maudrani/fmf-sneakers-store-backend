@@ -8,6 +8,7 @@ const OrderSchema = mongoose.Schema({
   payer: {
     name: { type: String, required: true, trim: true },
     surname: { type: String, required: true, trim: true },
+    dni: { type: String, required: true, trim: true },
     email: { type: String, required: true, trim: true },
     phone: {
       number: { type: String, required: true, trim: true },
