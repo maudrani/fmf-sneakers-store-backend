@@ -22,10 +22,12 @@ const OrderSchema = mongoose.Schema({
     },
   },
   payment_method: { type: String, required: true, trim: true },
+  shipment_type: { type: String, required: true, trim: true },
   order_id: { type: String, required: true, trim: true },
   totals: {
     subtotal_products: { type: Number, required: true },
     other_charge: { type: Number, required: true },
+    shipment_cost: { type: Number, required: true, default: 0 },
   },
   order_state: { type: String, required: true, trim: true },
   date: { type: String, required: true, trim: true },

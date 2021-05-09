@@ -42,6 +42,7 @@ exports.obtenerOrdenes = async (req, res) => {
 exports.actualizarOrden = async (req, res) => {
   const { order_state, items, payer, payment_method, totals, viewed, date, hour, state_changed } = req.body;
   const nuevaOrden = {};
+  const {shipment_cost} = totals;
 
   if (order_state) {
     nuevaOrden.order_state = order_state;
@@ -57,6 +58,9 @@ exports.actualizarOrden = async (req, res) => {
   }
   if (totals) {
     nuevaOrden.totals = totals;
+  }
+  if (shipment_cost) {
+    nuevaOrden.shipment_cost = shipment_cost;
   }
   if (viewed) {
     nuevaOrden.viewed = viewed;
